@@ -1,0 +1,83 @@
+CREATE DATABASE ElWiki;
+
+USE ElWiki;
+
+CREATE TABLE IF NOT EXISTS korisnik(
+id INT NOT NULL AUTO_INCREMENT,
+ime VARCHAR(50) NOT NULL,
+mail VARCHAR(30) NOT NULL,
+lozinka VARCHAR(30) NOT NULL,
+uloga INT NOT NULL,
+smer VARCHAR(50),
+godina INT,
+confirmcode VARCHAR( 32 ) NOT NULL,
+active INT( 1 ) NOT NULL DEFAULT '0',
+PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS stranica(
+id INT NOT NULL AUTO_INCREMENT,
+naziv VARCHAR(50) NOT NULL,
+br_glasova INT,
+original_tekst TEXT,
+izmenjen_tekst TEXT,
+izmenio INT,
+smer VARCHAR(50),
+godina INT,
+PRIMARY KEY(id),
+FOREIGN KEY(izmenio) REFERENCES korisnik(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS glasali(
+predmet INT,
+korisnik INT,
+FOREIGN KEY(predmet) REFERENCES stranica(id),
+FOREIGN KEY(korisnik) REFERENCES korisnik(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS novosti(
+id INT NOT NULL AUTO_INCREMENT,
+stranica INT,
+datum_promene VARCHAR(20),
+PRIMARY KEY(id),
+FOREIGN KEY(stranica) REFERENCES stranica(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS linkovi(
+id INT NOT NULL AUTO_INCREMENT,
+stranica INT NOT NULL,
+starnov INT NOT NULL,
+link VARCHAR(50),
+PRIMARY KEY(id),
+FOREIGN KEY(stranica) REFERENCES stranica(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS slike(
+id INT NOT NULL AUTO_INCREMENT,
+stranica INT NOT NULL,
+starnov INT NOT NULL,
+slika MEDIUMBLOB NOT NULL,
+PRIMARY KEY(id),
+FOREIGN KEY(stranica) REFERENCES stranica(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+INSERT INTO korisnik (ime, mail, lozinka, uloga, smer, godina,confirmcode,active)
+VALUES ('Nikola Popovic', 'nikola.popovic@elfak.rs', 'jasamadmin', 3, 'racunarstvo i informatika', 3,0,1);
+
+INSERT INTO stranica (id, naziv, smer, godina, original_tekst)
+VALUES (1,'zaposleni','nema', 0, 'zaposleni'),
+    (2,'studentske organizacije','nema', 0, 'studentske organizacije'),
+    (3,'prakse','nema', 0, 'prakse'),
+    (4,'oglasi','nema', 0, 'oglasi'),
+    (5,'elektroenergetika','nema', 0, 'elektroenergetika'),
+    (6,'elektronske komponente i mikrosistemi','nema', 0, 'elektronske komponente i mikrosistemi'),
+    (7,'racunarstvo i informatika','nema', 0, 'racunarstvo i informatika'),
+    (8,'upravljanje sistemima','nema', 0, 'upravljanje sistemima'),
+    (9,'elektronika','nema', 0, 'elektronika'),
+    (10,'telekomunikacije','nema', 0, 'telekomunikacije');
+	

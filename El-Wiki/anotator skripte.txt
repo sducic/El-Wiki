@@ -1,0 +1,35 @@
+<!--Anotator-->
+		<!-- jQuery must be included before Annotator -->
+		<script type="script/cache" src="../../annotator/lib/vendor/jquery.js"></script>
+
+		<!-- If you're sure your users will only be using browsers modern
+			 enough to have their own JSON.parse and JSON.stringify
+			 implementations you can skip this -->
+		<script type="script/cache" src="../../annotator/lib/vendor/json2.js"></script>
+
+		<!-- The main Annotator script -->
+		<script type="script/cache" src="../../annotator/pkg/annotator.min.js"></script>
+
+		<!-- Annotator's styling and images -->
+		<link rel="stylesheet" type="text/css" href="../../annotator/pkg/annotator.min.css">
+
+		<!-- The following plugins are entirely optional -->
+
+		<!-- The Store plugin. Saves annotations to a remote backend -->
+		<script type="script/cache" src="../../annotator/pkg/annotator.store.min.js"></script>
+
+		<!-- The Auth plugin. Allows users of Annotator to authenticate themselves
+			 to the remote backend -->
+		<script type="script/cache" src="../../annotator/pkg/annotator.auth.min.js"></script>
+
+		<!-- The Permissions plugin. See who created which annotation and create
+			 annotations as a specified user -->
+		<script type="script/cache" src="../../annotator/pkg/annotator.permissions.min.js"></script>
+
+		<!-- The Tags plugin. Edit and display tag keywords on annotations -->
+		<script type="script/cache" type="script/cache" src="../../annotator/pkg/annotator.tags.min.js"></script>
+
+		<!-- The Markdown plugin. Treat annotation text as Markdown -->
+		<script type="script/cache" src="../../annotator/lib/vendor/showdown.js"></script>
+		<script type="script/cache" src="../../annotator/pkg/annotator.markdown.min.js"></script>
+	<!--Anotator-->
