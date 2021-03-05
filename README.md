@@ -1,2 +1,2 @@
 # El-Wiki
-Web application
+Studentski timski projekat iz predmeta softversko inzenjerstvo. 
